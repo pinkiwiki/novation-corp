@@ -1,46 +1,145 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Novation.corp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novation.corp — Automate your future</title>
 <style>
+:root{--bg:#080a13;--panel:#111526;--purple:#8b70ff;--muted:#a3a8bd;--line:#252a40}
 *{box-sizing:border-box}
-body{margin:0;background:#080b16;color:white;font-family:Arial,sans-serif}
-header{padding:25px 8%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:25px;font-weight:bold;color:#8b7cff}
-nav a{color:white;text-decoration:none;margin-left:18px}
-.hero{text-align:center;padding:100px 20px}
-h1{font-size:clamp(38px,8vw,70px);margin:15px 0}
-h1 span{color:#8b7cff}
-p{color:#a9adc3;line-height:1.7}
-.btn{display:inline-block;background:#7665ff;color:white;padding:15px 25px;border-radius:10px;text-decoration:none;margin-top:20px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:30px 8%}
-.card{background:#12182a;padding:25px;border:1px solid #292e49;border-radius:15px}
-footer{text-align:center;padding:35px;color:#858ba5}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:#fff;font-family:Inter,Arial,sans-serif}
+header{height:76px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:#080a13ed;backdrop-filter:blur(14px);z-index:5}
+.logo{font-weight:900;font-size:21px;letter-spacing:1px}.logo span{color:var(--purple)}
+nav{display:flex;gap:24px}nav a{color:#c6c9d8;text-decoration:none;font-size:14px}
+button,.btn{border:0;border-radius:10px;background:var(--purple);color:white;padding:13px 19px;font-weight:700;text-decoration:none;cursor:pointer}
+button:hover,.btn:hover{filter:brightness(1.15)}
+.hero{text-align:center;padding:105px 20px 75px;background:radial-gradient(ellipse at 50% 0%,#49328a55,transparent 65%)}
+.tag{display:inline-block;border:1px solid #6552b5;color:#c7baff;border-radius:30px;padding:8px 14px;font-size:12px}
+h1{font-size:clamp(42px,8vw,76px);line-height:1.05;letter-spacing:-3px;margin:25px auto;max-width:850px}
+.gradient{background:linear-gradient(90deg,#a993ff,#6d9bff);background-clip:text;color:transparent}
+p{color:var(--muted);line-height:1.7}
+.hero p{max-width:570px;margin:0 auto 25px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.secondary{background:#1a2035;border:1px solid #353b56}
+.section{padding:75px 7%;max-width:1250px;margin:auto}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:34px;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:linear-gradient(145deg,#151b30,#101423);border:1px solid var(--line);padding:24px;border-radius:17px}
+.card h3{margin-top:12px}
+.icon{font-size:27px}
+.dashboard{background:#0d1120;border:1px solid #34304f;border-radius:18px;padding:22px;max-width:950px;margin:45px auto 0;text-align:left;box-shadow:0 20px 80px #6645ff20}
+.dash-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.stat{background:#171d31;padding:17px;border-radius:12px}
+.stat strong{font-size:25px;display:block;margin-top:8px}
+.status{color:#69e5a1;font-size:12px}
+.workflow{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.node{background:#1b2140;border:1px solid #6552b5;padding:15px;border-radius:12px;text-align:center}
+.pricing{border:1px solid var(--line);border-radius:18px;padding:25px;background:#111526}
+.pricing.featured{border-color:var(--purple);box-shadow:0 0 35px #7857ff20}
+.price{font-size:35px;font-weight:800;margin:20px 0}
+.pricing li{color:var(--muted);padding:7px 0}
+.pricing ul{padding-left:18px;min-height:125px}
+footer{border-top:1px solid var(--line);text-align:center;padding:30px;color:#82879e}
+#notice{color:#a99aff;margin-top:15px;min-height:20px}
+@media(max-width:650px){
+header{padding:0 5%;height:65px}nav{gap:12px}nav a{font-size:12px}
+nav a:nth-child(2){display:none}
+.hero{padding:75px 18px 45px}
+h1{letter-spacing:-2px}
+.section{padding:55px 5%}
+.stats{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">NOVATION.CORP</div>
-<nav><a href="#features">Fonctionnalités</a><a href="#prix">Tarifs</a></nav>
+<div class="logo">NOVATION<span>.CORP</span></div>
+<nav>
+<a href="#features">Fonctions</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#pricing">Tarifs</a>
+</nav>
+<a class="btn" href="#dashboard">Découvrir</a>
 </header>
+
 <section class="hero">
-<p>LA PUISSANCE DE L'AUTOMATISATION</p>
-<h1>Automatise ton <span>futur.</span></h1>
-<p>Crée, organise et pilote tes automatisations depuis une seule plateforme.</p>
-<a class="btn" href="#features">Découvrir la plateforme</a>
+<div class="tag">✦ LA NOUVELLE GÉNÉRATION D'AUTOMATISATION</div>
+<h1>Le futur du travail est <span class="gradient">automatisé.</span></h1>
+<p>Centralise tes processus, crée tes workflows et gagne du temps grâce à une plateforme conçue pour aller plus loin.</p>
+<div class="actions">
+<a class="btn" href="#dashboard">Explorer la plateforme →</a>
+<a class="btn secondary" href="#features">Découvrir les fonctions</a>
+</div>
+<div class="dashboard" id="dashboard">
+<div class="dash-top">
+<div><strong>Vue d'ensemble</strong><p>Bienvenue sur ton espace Novation</p></div>
+<span class="status">● Système opérationnel</span>
+</div>
+<div class="stats">
+<div class="stat"><span>Workflows</span><strong id="count">12</strong><small class="status">↑ Démonstration</small></div>
+<div class="stat"><span>Exécutions</span><strong>1 284</strong><small class="status">↑ Activité simulée</small></div>
+<div class="stat"><span>Temps économisé</span><strong>38 h</strong><small class="status">↑ Estimation démo</small></div>
+</div>
+<div class="workflow">
+<div class="node">⚡ Déclencheur</div><span>→</span>
+<div class="node">⚙️ Traitement</div><span>→</span>
+<div class="node">✉️ Action</div>
+</div>
+<div style="text-align:center;margin-top:25px">
+<button onclick="demo()">+ Créer un workflow démo</button>
+<div id="notice"></div>
+</div>
+</div>
 </section>
-<section class="cards" id="features">
-<div class="card"><h2>⚡ Automatisation</h2><p>Automatise tes tâches répétitives simplement.</p></div>
-<div class="card"><h2>📊 Tableau de bord</h2><p>Visualise et pilote tes activités.</p></div>
-<div class="card"><h2>🔗 Workflows</h2><p>Imagine et organise tes processus.</p></div>
+
+<section class="section" id="features">
+<div class="section-title"><h2>Une plateforme. <span class="gradient">Toutes tes idées.</span></h2><p>Les outils essentiels pour automatiser tes opérations.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">⚡</div><h3>Automatisation</h3><p>Imagine des processus pour réduire les tâches répétitives.</p></div>
+<div class="card"><div class="icon">🔗</div><h3>Workflows</h3><p>Organise tes étapes dans des scénarios faciles à comprendre.</p></div>
+<div class="card"><div class="icon">📊</div><h3>Analytique</h3><p>Visualise les activités et suis tes indicateurs.</p></div>
+<div class="card"><div class="icon">🔐</div><h3>Espace sécurisé</h3><p>Une interface pensée pour gérer ton espace de travail.</p></div>
+</div>
 </section>
-<section class="hero" id="prix">
-<h1>Simple. Puissant. <span>Novation.</span></h1>
-<p>Commence gratuitement et développe tes projets.</p>
-<a class="btn" href="mailto:contact@novation.corp">Nous contacter</a>
+
+<section class="section" id="pricing">
+<div class="section-title"><h2>Des offres <span class="gradient">simples.</span></h2><p>Les tarifs ci-dessous sont des propositions de lancement.</p></div>
+<div class="grid">
+<div class="pricing">
+<h3>Starter</h3><div class="price">0 € <small>/ mois</small></div>
+<p>Pour découvrir Novation.</p>
+<ul><li>3 workflows de démonstration</li><li>Tableau de bord</li><li>Fonctions de base</li></ul>
+<a class="btn secondary" href="mailto:contact@novation.corp">Commencer</a>
+</div>
+<div class="pricing featured">
+<div class="tag">POPULAIRE</div><h3>Pro</h3><div class="price">9,99 € <small>/ mois</small></div>
+<p>Pour développer tes projets.</p>
+<ul><li>Workflows avancés</li><li>Statistiques détaillées</li><li>Assistance prioritaire</li></ul>
+<a class="btn" href="mailto:contact@novation.corp">Choisir Pro</a>
+</div>
+<div class="pricing">
+<h3>Business</h3><div class="price">Sur devis</div>
+<p>Pour les équipes et entreprises.</p>
+<ul><li>Gestion d'équipe</li><li>Accompagnement</li><li>Fonctions personnalisées</li></ul>
+<a class="btn secondary" href="mailto:contact@novation.corp">Nous contacter</a>
+</div>
+</div>
 </section>
-<footer>© 2026 Novation.corp — Tous droits réservés</footer>
+<footer>
+<strong>NOVATION.CORP</strong>
+<p>Automatise ton futur. © 2026 Novation.corp</p>
+</footer>
+<script>
+let workflows=12;
+function demo(){
+workflows++;
+document.getElementById('count').textContent=workflows;
+document.getElementById('notice').textContent='✓ Workflow de démonstration ajouté !';
+}
+</script>
 </body>
 </html>
